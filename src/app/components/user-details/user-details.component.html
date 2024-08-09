@@ -1,0 +1,20 @@
+<div *ngIf="!isLoading">
+  <mat-card>
+    <mat-card-header>
+      <img mat-card-avatar [src]="user.data.avatar" />
+      <mat-card-title
+        >{{ user.data.first_name }} {{ user.data.last_name }}</mat-card-title
+      >
+    </mat-card-header>
+    <mat-card-content>
+      <p>ID: {{ user.data.id }}</p>
+      <p>First Name: {{ user.data.first_name }}</p>
+      <p>Last Name: {{ user.data.last_name }}</p>
+      <p>E-mail: {{user.data.email}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button (click)="goBack()">Back</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+<mat-spinner *ngIf="isLoading"></mat-spinner>

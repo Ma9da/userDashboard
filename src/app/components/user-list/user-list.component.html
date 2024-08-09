@@ -1,0 +1,41 @@
+<div class="user-list">
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let user" (click)="viewUser(user.id)">
+        {{ user.id }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="avatar">
+      <th mat-header-cell *matHeaderCellDef>Avatar</th>
+      <td mat-cell *matCellDef="let user" (click)="viewUser(user.id)">
+        <img [src]="user.avatar" alt="Avatar" />
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef>First Name</th>
+      <td mat-cell *matCellDef="let user" (click)="viewUser(user.id)">
+        {{ user.first_name }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef>Last Name</th>
+      <td mat-cell *matCellDef="let user" (click)="viewUser(user.id)">
+        {{ user.last_name }}
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  <mat-paginator
+    [length]="totalUsers"
+    [pageSize]="pageSize"
+    (page)="loadUsers($event.pageIndex)"
+  >
+  </mat-paginator>
+</div>
